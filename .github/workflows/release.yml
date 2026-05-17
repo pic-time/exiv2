@@ -132,6 +132,9 @@ jobs:
           choco install doxygen.install
           choco install graphviz
 
+      - name: Ensure Conan cache directory exists
+        run: New-Item -ItemType Directory -Force -Path "$Env:GITHUB_WORKSPACE/conanCache" | Out-Null
+
       - name: Restore conan cache
         uses: actions/cache@v5
         with:

@@ -38,6 +38,9 @@ jobs:
         with:
           arch: ${{matrix.platform}}
 
+      - name: Ensure Conan cache directory exists
+        run: New-Item -ItemType Directory -Force -Path "$Env:GITHUB_WORKSPACE/conanCache" | Out-Null
+
       - name: Restore Conan cache
         uses: actions/cache@v5
         with:

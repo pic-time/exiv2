@@ -36,7 +36,7 @@ TEST(XmpRace, ConcurrentEncodeDecode) {
         if (Exiv2::XmpParser::encode(packet, xmpData) == 0) {
           encode_count++;
         }
-      } catch (const std::exception& e) {
+      } catch (const std::exception&) {
         // Catch exceptions but continue to maximize race detection
       }
     }
@@ -72,7 +72,7 @@ TEST(XmpRace, ConcurrentEncodeDecode) {
         if (Exiv2::XmpParser::decode(xmpData, xmpPacket) == 0) {
           decode_count++;
         }
-      } catch (const std::exception& e) {
+      } catch (const std::exception&) {
         // Catch exceptions but continue
       }
     }

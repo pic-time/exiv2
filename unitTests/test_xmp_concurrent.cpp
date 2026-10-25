@@ -65,7 +65,7 @@ TEST(XmpParser, TortureTest) {
   // It aims to trigger race conditions in global state handling.
 
   constexpr auto NUM_THREADS = 10;
-  constexpr auto ITERATIONS = 100;
+  static constexpr auto ITERATIONS = 100;
 
   auto work = [](int id) {
     std::string ns_base = "http://example.com/thread/" + std::to_string(id) + "/";
@@ -78,7 +78,7 @@ TEST(XmpParser, TortureTest) {
       // Register namespace
       try {
         Exiv2::XmpProperties::registerNs(ns, prefix);
-      } catch (const std::exception& e) {
+      } catch (const std::exception&) {
         // Failures here might indicate race conditions
         // std::cerr << "Thread " << id << " failed register: " << e.what() << std::endl;
       }
@@ -91,7 +91,7 @@ TEST(XmpParser, TortureTest) {
       std::string packet;
       try {
         Exiv2::XmpParser::encode(packet, xmpData);
-      } catch (const std::exception& e) {
+      } catch (const std::exception&) {
         // std::cerr << "Thread " << id << " failed encode: " << e.what() << std::endl;
       }
     }

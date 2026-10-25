@@ -14,8 +14,6 @@ static const Exiv2::TagInfo* findTag(const Exiv2::TagInfo* pList, uint16_t tag) 
 int main(int argc, char* const argv[]) {
   try {
     setlocale(LC_CTYPE, ".utf8");
-    Exiv2::XmpParser::initialize();
-    ::atexit(Exiv2::XmpParser::terminate);
 
     const char* prog = argv[0];
     if (argc == 1) {

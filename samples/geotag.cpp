@@ -688,9 +688,6 @@ bool mySort(const std::string& a, const std::string& b) {
 }
 
 int main(int argc, const char* argv[]) {
-  Exiv2::XmpParser::initialize();
-  ::atexit(Exiv2::XmpParser::terminate);
-
   int result = 0;
   const char* program = argv[0];
 
